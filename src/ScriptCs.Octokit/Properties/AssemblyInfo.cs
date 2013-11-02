@@ -1,12 +1,12 @@
 ﻿using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("ScriptCs.ScriptPackBoilerplate")]
-[assembly: AssemblyDescription("A template for building ScriptCS script packs.")]
+[assembly: AssemblyTitle("ScriptCs.Octokit")]
+[assembly: AssemblyDescription("Octokit Script Pack for ScriptCs.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Scott Smith")]
-[assembly: AssemblyProduct("ScriptCs.ScriptPackBoilerplate")]
-[assembly: AssemblyCopyright("Copyright © Scott Smith")]
+[assembly: AssemblyCompany("Henrik Andersson")]
+[assembly: AssemblyProduct("ScriptCs.Octokit")]
+[assembly: AssemblyCopyright("Copyright © Henrik Andersson")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
