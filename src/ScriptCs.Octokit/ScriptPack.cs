@@ -8,7 +8,7 @@ namespace ScriptCs.Octokit
         IScriptPackContext IScriptPack.GetContext()
         {
             //Return the ScriptPackContext to be used in your scripts
-            return new OctokitContext();
+            return new Octokit();
         }
 
         void IScriptPack.Initialize(IScriptPackSession session)

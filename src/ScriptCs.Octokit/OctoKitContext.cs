@@ -4,7 +4,7 @@ using System.Net.Http.Headers;
 
 namespace ScriptCs.Octokit
 {
-    public class OctokitContext : IScriptPackContext
+    public class Octokit : IScriptPackContext
     {
         public GitHubClient Create(string productHeaderValue)
         {
