@@ -1,10 +1,10 @@
-﻿using Octokit;
+﻿using System.Net.Http.Headers;
+using Octokit;
 using ScriptCs.Contracts;
-using System.Net.Http.Headers;
 
 namespace ScriptCs.Octokit
 {
-    public class Octokit : IScriptPackContext
+    public class OctokitPack : IScriptPackContext
     {
         public GitHubClient Create(string productHeaderValue)
         {

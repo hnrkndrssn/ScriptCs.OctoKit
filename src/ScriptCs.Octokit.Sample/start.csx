@@ -1,3 +1,5 @@
-var octokit = Require<Octokit>();
+var octokit = Require<OctokitPack>();
 var client = octokit.Create("ScriptCs.Octokit");
-Console.WriteLine(client.User.Get("alfhenrik"));
+var userTask = client.User.Get("alfhenrik");
+var user = userTask.Result;
+Console.WriteLine(user.Name);
