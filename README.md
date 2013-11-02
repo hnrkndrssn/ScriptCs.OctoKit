@@ -1,38 +1,50 @@
-ScriptCs.ScriptPackBoilerplate
+ScriptCs.Octokit
 ==============================
 
-A template for building [ScriptCS](https://github.com/scriptcs/scriptcs) script packs.
+## About
+This is a [Script Pack](https://github.com/scriptcs/scriptcs/wiki) for [scriptcs](https://github.com/scriptcs/scriptcs) that can be used to interact with the GitHub API using the newly released [octokit.net](https://github.com/octokit/octokit.net).
+
+## Installation
+
+Install the nuget package by running `scriptcs -install ScriptCs.Octokit`
 
 ## Usage
 
-### Update AssemblyInfo.cs
+There's three different ways to create your GitHubClient:
+- Anonymous - access to public information only
+- Basic Auth - using your GitHub username/password
+- OAuth Token - using a personal access token (Account Settings->Applications->Personal Access Token)
 
-You should update the information inside of AssemblyInfo.cs to be based on the script pack you are creating. You are welcome to change all fields including the copyright.
+#### Anonymous
+```csharp
+var octokit = Require<Octokit>();
+var gitHubClient = octokit.Create("MyAwesomeScriptCsGitHubClient");
+Console.WriteLine(gitHubClient.User.Get("myusername"));
+```
 
-### Update Namespace
+#### Basic Auth
+```csharp
+var octokit = Require<Octokit>();
+var gitHubClient = octokit.CreateWithBasicAuth("MyAwesomeScriptCsGitHubClient", "myusername", "mypassword");
+var userTask = client.User.Current();
+var user = userTask.Result;
+Console.WriteLine(user.Name);
+```
 
-Change the namespace inside ScriptPack.cs and BoilerplateContext.cs to something appropriate for your script pack.
-
-### Rename BoilerplateContext
-
-Rename BoilerplateContext.cs filename and class name to the name you want to be used when using this script pack. For example, as it is now you would execute this command to use this script pack:
-
-    var context = Require<BoilerplateContext>();
-
-### Update ScriptPack.cs
-
-* Rename the class to the name you used in the previous step.
-* Update the GetContext() method to return the object from the class you defined in the previous step.
-
-### Implement your script pack functionality
-
-Use the comments inside the two classes to help guide you on creating your script pack.
+#### OAuth Token
+```csharp
+var octokit = Require<Octokit>();
+var gitHubClient = octokit.CreateWithOAuth("MyAwesomeScriptCsGitHubClient", "myusername", "myoauthtoken");
+var userTask = client.User.Current();
+var user = userTask.Result;
+Console.WriteLine(user.Name);
+```
 
 ##License
 
 The MIT License (MIT)
 
-Copyright (c) 2013 Scott Smith
+Copyright (c) 2013 Henrik Andersson
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
