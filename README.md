@@ -18,7 +18,7 @@ There's three different ways to create your GitHubClient:
 #### Anonymous
 ```csharp
 var octokit = Require<OctokitPack>();
-var client = octokit.Create("ScriptCs.Octokit");
+var client = octokit.Create("MyAwesomeScriptCsGitHubClient");
 var userTask = client.User.Get("alfhenrik");
 var user = userTask.Result;
 Console.WriteLine(user.Name);
