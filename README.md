@@ -26,7 +26,7 @@ Console.WriteLine(user.Name);
 
 #### Basic Auth
 ```csharp
-var octokit = Require<Octokit>();
+var octokit = Require<OctokitPack>();
 var gitHubClient = octokit.CreateWithBasicAuth("MyAwesomeScriptCsGitHubClient", "myusername", "mypassword");
 var userTask = client.User.Current();
 var user = userTask.Result;
@@ -35,7 +35,7 @@ Console.WriteLine(user.Name);
 
 #### OAuth Token
 ```csharp
-var octokit = Require<Octokit>();
+var octokit = Require<OctokitPack>();
 var gitHubClient = octokit.CreateWithOAuth("MyAwesomeScriptCsGitHubClient", "myusername", "myoauthtoken");
 var userTask = client.User.Current();
 var user = userTask.Result;
