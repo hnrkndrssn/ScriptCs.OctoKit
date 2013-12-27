@@ -32,16 +32,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Common.Logging">
-      <HintPath>..\packages\Common.Logging.2.1.2\lib\net40\Common.Logging.dll</HintPath>
-    </Reference>
     <Reference Include="Octokit, Version=0.1.7.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Octokit.0.1.7\lib\net45\Octokit.dll</HintPath>
     </Reference>
-    <Reference Include="ScriptCs.Contracts, Version=0.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="ScriptCs.Contracts, Version=0.8.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\ScriptCs.Contracts.0.7.0\lib\net45\ScriptCs.Contracts.dll</HintPath>
+      <HintPath>..\packages\ScriptCs.Contracts.0.8.1\lib\net45\ScriptCs.Contracts.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
