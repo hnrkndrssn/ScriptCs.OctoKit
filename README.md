@@ -6,7 +6,7 @@ This is a [Script Pack](https://github.com/scriptcs/scriptcs/wiki) for [scriptcs
 
 ## Installation
 
-Install the nuget package by running `scriptcs -install ScriptCs.Octokit -pre`
+Install the nuget package by running `scriptcs -install ScriptCs.Octokit`
 
 ## Usage
 
