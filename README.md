@@ -8,6 +8,11 @@ This is a [Script Pack](https://github.com/scriptcs/scriptcs/wiki) for [scriptcs
 
 Install the nuget package by running `scriptcs -install ScriptCs.Octokit`
 
+#### Pre-release package
+This script pack has been updated to latest version of [Octokit.net](https://github.com/octokit/octokit.net) (v0.4.1) and only supports [scriptcs](https://github.com/scriptcs/scriptcs) v0.10.
+
+To install, run `scriptcs -install ScriptCs.Octokit -pre`
+
 ## Usage
 
 There's three different ways to create your GitHubClient:
