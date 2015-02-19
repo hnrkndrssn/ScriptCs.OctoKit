@@ -30,3 +30,4 @@ _ReSharper*/
 App_Data/
 packages/
 *.nupkg
+scriptcs_packages
