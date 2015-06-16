@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScriptCs.Octokit", "ScriptCs.Octokit\ScriptCs.Octokit.csproj", "{97F549B0-B8AE-4908-850E-F36568124B95}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ScriptCs.Octokit.Sample", "ScriptCs.Octokit.Sample", "{C396B89F-D0C3-46D5-84FB-3C5F8FF50B73}"
 	ProjectSection(SolutionItems) = preProject
-		ScriptCs.Octokit.Sample\start.csx = ScriptCs.Octokit.Sample\start.csx
+		ScriptCs.Octokit.Sample\sample.csx = ScriptCs.Octokit.Sample\sample.csx
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{E007E4EE-7723-48D3-9644-12090524BF4F}"

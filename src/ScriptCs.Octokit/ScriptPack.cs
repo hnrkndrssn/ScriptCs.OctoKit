@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using ScriptCs.Contracts;
+﻿using ScriptCs.Contracts;
 
 namespace ScriptCs.Octokit
 {
