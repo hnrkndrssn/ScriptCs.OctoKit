@@ -11,6 +11,7 @@ let projectSummary = projectDescription
 let buildDir = "./src/ScriptCs.Octokit/bin"
 let packagingRoot = "./packaging/"
 let packagingDir = packagingRoot @@ "ScriptCs.Octokit"
+let localNuGet = "C:\NuGet"
 
 let buildMode = getBuildParamOrDefault "buildMode" "Release"
 let releaseNotes =
@@ -53,8 +54,16 @@ Target "BuildApp" (fun _ ->
     |> DoNothing
 )
 
+let private packageFileName project version = sprintf "%s.%s.nupkg" project version
+
 Target "RunTests" (fun _ ->
-  trace "This is where we will run some tests"
+    CopyFile localNuGet (packagingRoot @@ (packageFileName projectName releaseNotes.AssemblyVersion) )
+
+    let result = ExecProcess(fun info ->
+        info.FileName <- FullName "./src/ScriptCs.Octokit.Sample/run.cmd"
+        info.UseShellExecute <- false
+        info.WorkingDirectory <- FullName "./src/ScriptCs.Octokit.Sample/") (TimeSpan.FromMinutes 5.0)
+    if result <> 0 then failwithf "run.cmd returned with a non-zero exit code"
 )
 
 Target "CreateNuGetPackage" (fun _ ->
@@ -102,10 +111,10 @@ Target "PublishPackage" DoNothing
 "Clean"
   ==> "AssemblyInfo"
   ==> "BuildApp"
-  ==> "RunTests"
   ==> "Default"
   ==> "CreateNuGetPackage"
   ==> "CreatePackage"
+  ==> "RunTests"
   =?> ("PublishNuGetPackage", hasBuildParam "nugetApiKey")
   ==> "PublishPackage"
 
