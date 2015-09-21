@@ -8,7 +8,7 @@ let projectName = "ScriptCs.Octokit"
 let projectDescription = "Octokit Script Pack for ScriptCs."
 let projectSummary = projectDescription
 
-let buildDir = "./ScriptCs.Octokit/bin"
+let buildDir = "./src/ScriptCs.Octokit/bin"
 let packagingRoot = "./packaging/"
 let packagingDir = packagingRoot @@ "ScriptCs.Octokit"
 
@@ -24,13 +24,13 @@ MSBuildDefaults <- {
 }
 
 Target "Clean" (fun _ ->
-    CleanDirs [buildDir; packagingRoot; packagingDir;]
+    CleanDirs [buildDir; packagingDir; packagingRoot;]
 )
 
 Target "AssemblyInfo" (fun _ ->
     AssemblyInfoHelper.ReplaceAssemblyInfoVersions (fun p ->
         {p with
-            OutputFileName = "./ScriptCs.Octokit/Properties/AssemblyInfo.cs"
+            OutputFileName = "./src/ScriptCs.Octokit/Properties/AssemblyInfo.cs"
             AssemblyVersion = releaseNotes.AssemblyVersion
             AssemblyFileVersion = releaseNotes.AssemblyVersion
             AssemblyInformationalVersion = releaseNotes.AssemblyVersion
@@ -78,13 +78,26 @@ Target "CreateNuGetPackage" (fun _ ->
           "Octokit", GetPackageVersion "./packages/" "Octokit"
           "ScriptCs.Contracts", GetPackageVersion "./packages/" "ScriptCs.Contracts"
         ]
-      AccessKey = getBuildParamOrDefault "nugetKey" ""
-      Publish = hasBuildParam "nugetKey" }) "./ScriptCs.Octokit/ScriptCs.Octokit.nuspec"
+      Publish = false }) "./ScriptCs.Octokit.nuspec"
+)
+
+Target "PublishNuGetPackage" (fun _ ->
+    trace "This is where we will publish the NuGet package to NuGet"
+    NuGetPublish (fun p ->
+    {p with
+        OutputPath = packagingRoot
+        WorkingDir = packagingDir
+        Project = projectName
+        Version = releaseNotes.AssemblyVersion
+        AccessKey = getBuildParamOrDefault "nugetApiKey" ""
+    })
 )
 
 Target "Default" DoNothing
 
 Target "CreatePackage" DoNothing
+
+Target "PublishPackage" DoNothing
 
 "Clean"
   ==> "AssemblyInfo"
@@ -93,5 +106,7 @@ Target "CreatePackage" DoNothing
   ==> "Default"
   ==> "CreateNuGetPackage"
   ==> "CreatePackage"
+  =?> ("PublishNuGetPackage", hasBuildParam "nugetApiKey")
+  ==> "PublishPackage"
 
 RunTargetOrDefault "Default"

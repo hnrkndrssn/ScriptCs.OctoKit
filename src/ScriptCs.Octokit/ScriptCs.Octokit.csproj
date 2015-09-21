@@ -33,11 +33,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Octokit, Version=0.16.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Octokit.0.16.0\lib\net45\Octokit.dll</HintPath>
+      <HintPath>..\..\packages\Octokit.0.16.0\lib\net45\Octokit.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="ScriptCs.Contracts, Version=0.15.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ScriptCs.Contracts.0.15.0\lib\net45\ScriptCs.Contracts.dll</HintPath>
+      <HintPath>..\..\packages\ScriptCs.Contracts.0.15.0\lib\net45\ScriptCs.Contracts.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -57,7 +57,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="ScriptCs.Octokit.nuspec" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

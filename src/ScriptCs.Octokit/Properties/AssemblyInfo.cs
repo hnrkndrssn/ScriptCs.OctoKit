@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+using System.Reflection;
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("ScriptCs.Octokit")]
@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Henrik Andersson")]
 [assembly: AssemblyProduct("ScriptCs.Octokit")]
-[assembly: AssemblyCopyright("Copyright © Henrik Andersson")]
+[assembly: AssemblyCopyright("Copyright � Henrik Andersson")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
