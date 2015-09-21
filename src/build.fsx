@@ -91,8 +91,7 @@ Target "CreatePackage" DoNothing
   ==> "BuildApp"
   ==> "RunTests"
   ==> "Default"
-
-"CreateNuGetPackage"
+  ==> "CreateNuGetPackage"
   ==> "CreatePackage"
 
 RunTargetOrDefault "Default"

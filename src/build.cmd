@@ -6,19 +6,14 @@
 cls
 
 SET TARGET="Default"
-
 IF NOT [%1]==[] (SET TARGET="%1")
 
+IF %TARGET%=="Default" (SET RunTests=runTests)
+IF %TARGET%=="RunTests" (SET RunTests=runTests)
 SET BUILDMODE="Release"
 IF NOT [%2]==[] (SET BUILDMODE="%2")
 
-IF %TARGET%=="CreatePackage" (SET RunBuild=1)
-
-IF NOT "%RunBuild%"=="" (
-  "tools\FAKE.Core\tools\FAKE.exe" "build.fsx" "target=BuildApp" "buildMode=%BUILDMODE%"
-)
-
-"tools\FAKE.Core\tools\FAKE.exe" "build.fsx" "target=%TARGET%" "buildMode=%BUILDMODE%"
+"tools\FAKE.Core\tools\FAKE.exe" "build.fsx" "target=%TARGET%" "buildMode=%BUILDMODE%" %RunTests%
 
 :Quit
 exit /b %errorlevel%
