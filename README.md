@@ -2,11 +2,11 @@ ScriptCs.Octokit
 ==============================
 
 ## About
-This is a [Script Pack](https://github.com/scriptcs/scriptcs/wiki) for [scriptcs](https://github.com/scriptcs/scriptcs) that can be used to interact with the GitHub API using the newly released [octokit.net](https://github.com/octokit/octokit.net).
+This is a [Script Pack](https://github.com/scriptcs/scriptcs/wiki) for [scriptcs](https://github.com/scriptcs/scriptcs) that can be used to interact with the GitHub API using [octokit.net](https://github.com/octokit/octokit.net).
 
 ## Installation
 
-Install the nuget package by running `scriptcs -install ScriptCs.Octokit`
+Install the NuGet package by running `scriptcs -install ScriptCs.Octokit`
 
 ## Usage
 
