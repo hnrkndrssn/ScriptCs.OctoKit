@@ -42,7 +42,7 @@ var user = userTask.Result;
 Console.WriteLine(user.Name);
 ```
 
-#### Build and publish NuGet packages
+#### Build, create, test and publish NuGet packages
 
 _This is purely here as a reminder for me to remember how to build, create and publish new versions of ScriptCs.Octokit to NuGet._
 
@@ -61,10 +61,10 @@ Then run the following command in a shell from the root of the repository.
 ```
 .\build.cmd CreatePackage
 ```
-Once the NuGet package has been created, copy it to your local NuGet feed (i.e. `C:\NuGet`), then run the following commands to test the new package.
+
+Once the NuGet package has been created run the following commands to test the new package.
 ```
-cd ScriptCs.Octokit.Sample
-.\run.cmd
+.\build.cmd RunTests
 ```
 
 ##### Publish NuGet package to NuGet.org
