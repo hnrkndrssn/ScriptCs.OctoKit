@@ -44,7 +44,7 @@ Console.WriteLine(user.Name);
 
 #### Build and publish NuGet packages
 
-_This is purely here as a reminder to me to remember how to build, create and publish new versions of ScriptCs.Octokit to NuGet._
+_This is purely here as a reminder for me to remember how to build, create and publish new versions of ScriptCs.Octokit to NuGet._
 
 ##### Build
 ```
