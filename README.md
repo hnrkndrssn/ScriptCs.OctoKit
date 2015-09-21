@@ -42,7 +42,38 @@ var user = userTask.Result;
 Console.WriteLine(user.Name);
 ```
 
-##License
+#### Build and publish NuGet packages
+
+_This is purely here as a reminder to me to remember how to build, create and publish new versions of ScriptCs.Octokit to NuGet._
+
+##### Build
+```
+git clone https://github.com/alfhenrik/ScriptCs.Octokit.git
+cd ScriptCs.Octokit
+.\build.cmd
+```
+
+##### Create NuGet package
+ - Open the ReleaseNotes.md file in the root of the repository
+ - Add a new entry to the file in the format `* x.y.z - Release notes`
+
+Then run the following command in a shell from the root of the repository.
+```
+.\build.cmd CreatePackage
+```
+Once the NuGet package has been created, copy it to your local NuGet feed (i.e. `C:\NuGet`), then run the following commands to test the new package.
+```
+cd ScriptCs.Octokit.Sample
+.\run.cmd
+```
+
+##### Publish NuGet package to NuGet.org
+To publish the NuGet package to NuGet.org, run the following command.
+```
+.\build.cmd PublishPackage "NuGetApiKey"
+```
+
+## License
 
 The MIT License (MIT)
 
