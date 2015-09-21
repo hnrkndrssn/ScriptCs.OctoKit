@@ -31,3 +31,7 @@ App_Data/
 packages/
 *.nupkg
 scriptcs_packages
+packaging/
+tools/
+.fake/
+._.gitattributes
