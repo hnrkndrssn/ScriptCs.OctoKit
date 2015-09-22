@@ -73,6 +73,10 @@ To publish the NuGet package to NuGet.org, run the following command.
 .\build.cmd PublishPackage "NuGetApiKey"
 ```
 
+##### Create release on GitHub
+
+*TODO*
+
 ## License
 
 The MIT License (MIT)
