@@ -18,10 +18,22 @@ let releaseNotes =
   ReadFile "ReleaseNotes.md"
   |> ReleaseNotesHelper.parseReleaseNotes
 
+let private packageFileName project version = sprintf "%s.%s.nupkg" project version
+
 MSBuildDefaults <- {
   MSBuildDefaults with
     ToolsVersion = Some "12.0"
     Verbosity = Some MSBuildVerbosity.Minimal
+}
+
+let setParams defaults = {
+  defaults with
+    ToolsVersion = Some("12.0")
+    Targets = ["Build"]
+    Properties =
+      [
+        "Configuration", buildMode
+      ]
 }
 
 Target "Clean" (fun _ ->
@@ -38,25 +50,17 @@ Target "AssemblyInfo" (fun _ ->
         })
 )
 
-let setParams defaults = {
-  defaults with
-    ToolsVersion = Some("12.0")
-    Targets = ["Build"]
-    Properties =
-      [
-        "Configuration", buildMode
-        "RestorePackages", "true"
-      ]
-}
-
 Target "BuildApp" (fun _ ->
-  build setParams "./ScriptCs.Octokit.sln"
-    |> DoNothing
+    RestorePackages()
+    build setParams "./ScriptCs.Octokit.sln"
+        |> DoNothing
 )
 
-let private packageFileName project version = sprintf "%s.%s.nupkg" project version
+Target "UnitTests" (fun _ -> 
+    trace "This is where unit tests should be run"
+)
 
-Target "RunTests" (fun _ ->
+Target "EndToEndTests" (fun _ ->
     CopyFile localNuGet (packagingRoot @@ (packageFileName projectName releaseNotes.AssemblyVersion) )
 
     let result = ExecProcess(fun info ->
@@ -91,7 +95,6 @@ Target "CreateNuGetPackage" (fun _ ->
 )
 
 Target "PublishNuGetPackage" (fun _ ->
-    trace "This is where we will publish the NuGet package to NuGet"
     NuGetPublish (fun p ->
     {p with
         OutputPath = packagingRoot
@@ -111,10 +114,11 @@ Target "PublishPackage" DoNothing
 "Clean"
   ==> "AssemblyInfo"
   ==> "BuildApp"
+  ==> "UnitTests"
   ==> "Default"
   ==> "CreateNuGetPackage"
   ==> "CreatePackage"
-  ==> "RunTests"
+  ==> "EndToEndTests"
   =?> ("PublishNuGetPackage", hasBuildParam "nugetApiKey")
   ==> "PublishPackage"
 
