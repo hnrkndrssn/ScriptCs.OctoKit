@@ -64,7 +64,7 @@ Then run the following command in a shell from the root of the repository.
 
 Once the NuGet package has been created run the following commands to test the new package.
 ```
-.\build.cmd RunTests
+.\build.cmd RunEndToEndTests
 ```
 
 ##### Publish NuGet package to NuGet.org

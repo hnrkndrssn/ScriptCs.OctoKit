@@ -31,6 +31,7 @@ App_Data/
 packages/
 *.nupkg
 scriptcs_packages
+scriptcs_packages.config
 packaging/
 tools/
 .fake/

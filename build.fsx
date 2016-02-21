@@ -115,10 +115,10 @@ Target "PublishPackage" DoNothing
   ==> "AssemblyInfo"
   ==> "BuildApp"
   ==> "UnitTests"
-  ==> "Default"
   ==> "CreateNuGetPackage"
   ==> "CreatePackage"
   ==> "EndToEndTests"
+  ==> "Default"
   =?> ("PublishNuGetPackage", hasBuildParam "nugetApiKey")
   ==> "PublishPackage"
 

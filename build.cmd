@@ -1,5 +1,9 @@
 @echo off
 
+IF NOT EXIST .nuget\NuGet.exe (
+	powershell -Command "Start-BitsTransfer -Source https://dist.nuget.org/win-x86-commandline/latest/nuget.exe -Destination .nuget\NuGet.exe"
+)
+
 ".nuget\NuGet.exe" "install" "FAKE.Core" "-OutputDirectory" "tools" "-ExcludeVersion" "-version" "4.4.2"
 
 :build
