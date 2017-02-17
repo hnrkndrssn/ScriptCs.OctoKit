@@ -22,13 +22,13 @@ let private packageFileName project version = sprintf "%s.%s.nupkg" project vers
 
 MSBuildDefaults <- {
   MSBuildDefaults with
-    ToolsVersion = Some "12.0"
+    ToolsVersion = Some "14.0"
     Verbosity = Some MSBuildVerbosity.Minimal
 }
 
 let setParams defaults = {
   defaults with
-    ToolsVersion = Some("12.0")
+    ToolsVersion = Some("14.0")
     Targets = ["Build"]
     Properties =
       [
