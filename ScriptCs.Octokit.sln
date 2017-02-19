@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.26014.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScriptCs.Octokit", "src\ScriptCs.Octokit\ScriptCs.Octokit.csproj", "{97F549B0-B8AE-4908-850E-F36568124B95}"
 EndProject
@@ -16,6 +16,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sample", "Sample", "{996696BD-24F9-40E8-AB75-36D2CC302E55}"
 	ProjectSection(SolutionItems) = preProject
 		src\ScriptCs.Octokit.Sample\run.cmd = src\ScriptCs.Octokit.Sample\run.cmd
+		src\ScriptCs.Octokit.Sample\RunIntegrationTest.ps1 = src\ScriptCs.Octokit.Sample\RunIntegrationTest.ps1
 		src\ScriptCs.Octokit.Sample\sample.csx = src\ScriptCs.Octokit.Sample\sample.csx
 	EndProjectSection
 EndProject
