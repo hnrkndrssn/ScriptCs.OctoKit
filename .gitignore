@@ -36,3 +36,4 @@ packaging/
 tools/
 .fake/
 ._.gitattributes
+.idea/
