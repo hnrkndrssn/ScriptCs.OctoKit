@@ -1,7 +1,7 @@
 version: 1.0.{build}
 image: Visual Studio 2017
 environment:
-  NUGET_ORG_API_KEY:
+  NuGetApiKey:
     secure: hSqSXXsRHbyw+XicOQPC17vUR5v5/773a35XIZQDghcHCgTdvXQ8R1seKH+TxoDq
 dotnet_csproj:
   patch: true

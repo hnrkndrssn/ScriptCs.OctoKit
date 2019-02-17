@@ -104,15 +104,14 @@ Task("__Pack")
 });
 
 var isTag = bool.Parse(EnvironmentVariable("APPVEYOR_REPO_TAG"));
-var nugetApiKey = EnvironmentVariable("NUGET_ORG_API_KEY");
 Task("__Publish")
     .WithCriteria(isTag)
-    .WithCriteria(!string.IsNullOrEmpty(nugetApiKey))
     .WithCriteria(BuildSystem.IsRunningOnAppVeyor)
     .Does(() =>
 {
     NuGetPush($"{artifactsDir}/{projectName}.{nugetVersion}.nupkg", new NuGetPushSettings {
-        ApiKey = nugetApiKey
+        Source = "https://www.nuget.org/api/v2/package",
+        ApiKey = EnvironmentVariable("NuGetApiKey")
     });
 });
 
