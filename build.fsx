@@ -11,7 +11,7 @@ let projectSummary = projectDescription
 let buildDir = "./src/ScriptCs.Octokit/bin"
 let packagingRoot = "./packaging/"
 let packagingDir = packagingRoot @@ "ScriptCs.Octokit"
-let localNuGet = "C:\NuGet"
+let localNuGet = "./.nuget"
 
 let buildMode = getBuildParamOrDefault "buildMode" "Release"
 let releaseNotes =
