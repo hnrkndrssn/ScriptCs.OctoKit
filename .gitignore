@@ -32,6 +32,7 @@ packages/
 *.nupkg
 scriptcs_packages
 scriptcs_packages.config
+scriptcs_nuget.config
 packaging/
 tools/
 .fake/
