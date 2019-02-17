@@ -103,7 +103,7 @@ Task("__Pack")
         });
 });
 
-var isTag = bool.Parse(EnvironmentVariable("APPVEYOR_REPO_TAG"));
+var isTag = bool.Parse(EnvironmentVariable("APPVEYOR_REPO_TAG") ?? "false");
 Task("__Publish")
     .WithCriteria(isTag)
     .WithCriteria(BuildSystem.IsRunningOnAppVeyor)
