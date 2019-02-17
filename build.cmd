@@ -1,30 +1,24 @@
-@echo off
+@ECHO OFF
+REM see http://joshua.poehls.me/powershell-batch-file-wrapper/
 
-IF NOT EXIST .nuget\NuGet.exe (
-	powershell -Command "Start-BitsTransfer -Source https://dist.nuget.org/win-x86-commandline/latest/nuget.exe -Destination .nuget\NuGet.exe"
-)
+SET SCRIPTNAME=%~d0%~p0%~n0.ps1
+SET ARGS=%*
+IF [%ARGS%] NEQ [] GOTO ESCAPE_ARGS
 
-".nuget\NuGet.exe" "install" "FAKE.Core" "-OutputDirectory" "tools" "-ExcludeVersion" "-version" "4.4.2"
+:POWERSHELL
+PowerShell.exe -NoProfile -NonInteractive -NoLogo -ExecutionPolicy Unrestricted -Command "& { $ErrorActionPreference = 'Stop'; & '%SCRIPTNAME%' @args; EXIT $LASTEXITCODE }" %ARGS%
+EXIT /B %ERRORLEVEL%
 
-:build
-cls
+:ESCAPE_ARGS
+SET ARGS=%ARGS:"=\"%
+SET ARGS=%ARGS:`=``%
+SET ARGS=%ARGS:'=`'%
+SET ARGS=%ARGS:$=`$%
+SET ARGS=%ARGS:{=`}%
+SET ARGS=%ARGS:}=`}%
+SET ARGS=%ARGS:(=`(%
+SET ARGS=%ARGS:)=`)%
+SET ARGS=%ARGS:,=`,%
+SET ARGS=%ARGS:^%=%
 
-SET TARGET="Default"
-IF NOT [%1]==[] (SET TARGET="%1")
-
-IF %TARGET%=="Default" (SET RunTests=runTests)
-IF %TARGET%=="RunTests" (SET RunTests=runTests)
-
-SET BUILDMODE="Release"
-IF NOT %TARGET%=="PublishPackage" (
-	IF NOT [%2]==[] (SET BUILDMODE="%2")
-)
-
-IF %TARGET%=="PublishPackage" (
-	IF NOT [%2]==[] (SET NuGetApiKey="%2")
-)
-
-"tools\FAKE.Core\tools\FAKE.exe" "build.fsx" "target=%TARGET%" "buildMode=%BUILDMODE%" "nugetApiKey=%NuGetApiKey%"
-
-:Quit
-exit /b %errorlevel%
+GOTO POWERSHELL
