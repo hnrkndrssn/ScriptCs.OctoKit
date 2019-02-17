@@ -1,5 +1,7 @@
 ScriptCs.Octokit
 ==============================
+[![Build status](https://ci.appveyor.com/api/projects/status/j024yq10dbfovsxi/branch/master?svg=true)](https://ci.appveyor.com/project/hnrkndrssn/scriptcs-octokit/branch/master)
+[![NuGet](https://img.shields.io/nuget/v/ScriptCs.Octokit.svg)](https://www.nuget.org/packages/ScriptCs.Octokit)
 
 ## About
 This is a [Script Pack](https://github.com/scriptcs/scriptcs/wiki) for [scriptcs](https://github.com/scriptcs/scriptcs) that can be used to interact with the GitHub API using [octokit.net](https://github.com/octokit/octokit.net).
