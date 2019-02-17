@@ -95,6 +95,7 @@ var author = "Henrik Andersson";
 var copyright = $"Copyright \u00a9 {author}";
 Task("__Pack")
     .Does(() => {
+        var releaseNotes = ParseReleaseNotes("./ReleaseNotes.md");
         DotNetCorePack(Path.Combine("src", "ScriptCs.Octokit"), new DotNetCorePackSettings
         {
             Configuration = configuration,
@@ -107,6 +108,7 @@ Task("__Pack")
                 .Append($"/p:Authors=\"{author}\"")
                 .Append($"/p:Owners=\"{author}\"")
                 .Append($"/p:Copyright=\"{copyright}\"")
+                .Append($"/p:PackageReleaseNotes=\"{string.Join(Environment.NewLine, releaseNotes.Notes)}\"")
         });
 });
 
