@@ -3,10 +3,9 @@
     <TargetFramework>net45</TargetFramework>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <AssemblyTitle>ScriptCs.Octokit</AssemblyTitle>
-    <Company>Henrik Andersson</Company>
     <Product>ScriptCs.Octokit</Product>
     <Description>Octokit Script Pack for ScriptCs.</Description>
-    <Copyright>Copyright � Henrik Andersson</Copyright>
+    <Copyright>Copyright \u00a9 Henrik Andersson</Copyright>
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <PostBuildEvent />
   </PropertyGroup>

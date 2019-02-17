@@ -91,6 +91,8 @@ Task("__Test")
     Information("Tests goes here");
 });
 
+var author = "Henrik Andersson";
+var copyright = $"Copyright \u00a9 {author}";
 Task("__Pack")
     .Does(() => {
         DotNetCorePack(Path.Combine("src", "ScriptCs.Octokit"), new DotNetCorePackSettings
@@ -99,7 +101,12 @@ Task("__Pack")
             OutputDirectory = artifactsDir,
             NoBuild = true,
             NoRestore = true,
-            ArgumentCustomization = args => args.Append($"/p:Version={nugetVersion}")
+            ArgumentCustomization = args => 
+                args
+                .Append($"/p:Version={nugetVersion}")
+                .Append($"/p:Authors=\"{author}\"")
+                .Append($"/p:Owners=\"{author}\"")
+                .Append($"/p:Copyright=\"{copyright}\"")
         });
 });
 
