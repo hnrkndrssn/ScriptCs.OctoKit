@@ -52,9 +52,9 @@ Task("__Default")
     .IsDependentOn("__Restore")
     .IsDependentOn("__Build")
     .IsDependentOn("__Pack")
-    .IsDependentOn("__Publish")
     .IsDependentOn("__CopyToLocalPackages")
-    .IsDependentOn("__RunIntegrationTests");
+    .IsDependentOn("__RunIntegrationTests")
+    .IsDependentOn("__Publish");
 
 Task("__Clean")
     .Does(() =>
@@ -110,18 +110,6 @@ Task("__Pack")
         });
 });
 
-var isTag = bool.Parse(EnvironmentVariable("APPVEYOR_REPO_TAG") ?? "false");
-Task("__Publish")
-    .WithCriteria(isTag)
-    .WithCriteria(BuildSystem.IsRunningOnAppVeyor)
-    .Does(() =>
-{
-    NuGetPush($"{artifactsDir}/{projectName}.{nugetVersion}.nupkg", new NuGetPushSettings {
-        Source = "https://www.nuget.org/api/v2/package",
-        ApiKey = EnvironmentVariable("NuGetApiKey")
-    });
-});
-
 Task("__CopyToLocalPackages")
     .WithCriteria(BuildSystem.IsLocalBuild)
     .IsDependentOn("__Pack")
@@ -132,7 +120,7 @@ Task("__CopyToLocalPackages")
 });
 
 Task("__RunIntegrationTests")
-    .IsDependentOn("__Publish")
+    .IsDependentOn("__Pack")
     .Does(() => 
 {
     var sampleDir = Path.Combine("src", "ScriptCs.Octokit.Sample");
@@ -146,6 +134,19 @@ Task("__RunIntegrationTests")
     });
     if (exitCode != 0)
         throw new Exception($"Running integration tests failed, see above for failure details.");
+});
+
+var isTag = bool.Parse(EnvironmentVariable("APPVEYOR_REPO_TAG") ?? "false");
+Task("__Publish")
+    .WithCriteria(isTag)
+    .WithCriteria(BuildSystem.IsRunningOnAppVeyor)
+    .IsDependentOn("__RunIntegrationTests")
+    .Does(() =>
+{
+    NuGetPush($"{artifactsDir}/{projectName}.{nugetVersion}.nupkg", new NuGetPushSettings {
+        Source = "https://www.nuget.org/api/v2/package",
+        ApiKey = EnvironmentVariable("NuGetApiKey")
+    });
 });
 
 //////////////////////////////////////////////////////////////////////
