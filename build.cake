@@ -104,7 +104,7 @@ Task("__Pack")
 });
 
 var isTag = !string.IsNullOrEmpty(EnvironmentVariable("APPVEYOR_REPO_TAG"));
-var nugetApiKey = EnvironmentVariable("NugetOrgApiKey");
+var nugetApiKey = EnvironmentVariable("NUGET_ORG_API_KEY");
 Task("__Publish")
     .WithCriteria(isTag)
     .WithCriteria(!string.IsNullOrEmpty(nugetApiKey))
