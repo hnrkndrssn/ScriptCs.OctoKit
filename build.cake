@@ -103,7 +103,7 @@ Task("__Pack")
         });
 });
 
-var isTag = !string.IsNullOrEmpty(EnvironmentVariable("APPVEYOR_REPO_TAG"));
+var isTag = bool.Parse(EnvironmentVariable("APPVEYOR_REPO_TAG"));
 var nugetApiKey = EnvironmentVariable("NUGET_ORG_API_KEY");
 Task("__Publish")
     .WithCriteria(isTag)
