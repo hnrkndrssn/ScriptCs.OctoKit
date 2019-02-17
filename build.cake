@@ -126,15 +126,15 @@ Task("__CopyToLocalPackages")
 });
 
 Task("__RunIntegrationTests")
-    .WithCriteria(BuildSystem.IsLocalBuild)
-    .IsDependentOn("__CopyToLocalPackages")
+    .IsDependentOn("__Publish")
     .Does(() => 
 {
     var sampleDir = Path.Combine("src", "ScriptCs.Octokit.Sample");
     var exitCode = StartProcess("cmd", new ProcessSettings {
         Arguments = new ProcessArgumentBuilder()
             .Append(@"/C")
-            .Append("run.cmd"),
+            .Append("run.cmd")
+            .Append(nugetVersion),
         Timeout = (int)TimeSpan.FromMinutes(5).TotalMilliseconds,
         WorkingDirectory = sampleDir
     });
