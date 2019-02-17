@@ -103,10 +103,10 @@ Task("__Pack")
         });
 });
 
-var isMasterBranch = StringComparer.OrdinalIgnoreCase.Equals("master", BuildSystem.AppVeyor.Environment.Repository.Branch);
+var isTag = !string.IsNullOrEmpty(EnvironmentVariable("APPVEYOR_REPO_TAG"));
 var nugetApiKey = EnvironmentVariable("NugetOrgApiKey");
 Task("__Publish")
-    .WithCriteria(isMasterBranch)
+    .WithCriteria(isTag)
     .WithCriteria(!string.IsNullOrEmpty(nugetApiKey))
     .WithCriteria(BuildSystem.IsRunningOnAppVeyor)
     .Does(() =>
