@@ -46,38 +46,32 @@ Console.WriteLine(user.Name);
 
 #### Build, create, test and publish NuGet packages
 
-_This is purely here as a reminder for me to remember how to build, create and publish new versions of ScriptCs.Octokit to NuGet._
-
 ##### Build
 ```
-git clone https://github.com/alfhenrik/ScriptCs.Octokit.git
+git clone https://github.com/hnrkndrssn/ScriptCs.OctoKit.git
 cd ScriptCs.Octokit
 .\build.cmd
 ```
 
-##### Create NuGet package
- - Open the ReleaseNotes.md file in the root of the repository
+##### Prepare for a new release
+ - Open the `ReleaseNotes.md` file in the root of the repository
  - Add a new entry to the file in the format `* x.y.z - Release notes`
-
-Then run the following command in a shell from the root of the repository.
+ - Commit and push the change
+ - Tag the latest commit with the next version `x.y.z`, and push the new tag to GitHub by running the following commands:
 ```
-.\build.cmd CreatePackage
-```
-
-Once the NuGet package has been created run the following commands to test the new package.
-```
-.\build.cmd RunEndToEndTests
+git tag x.y.z
+git push origin x.y.z
 ```
 
-##### Publish NuGet package to NuGet.org
-To publish the NuGet package to NuGet.org, run the following command.
-```
-.\build.cmd PublishPackage "NuGetApiKey"
-```
+AppVeyor will build the tag and publish the new release to NuGet.org
 
 ##### Create release on GitHub
 
-*TODO*
+- Download the new NuGet package from AppVeyor (or NuGet.org)
+- Create a new release from tag `x.y.z` with `vX.Y.Z` as the `Release title`
+- Add `- x.y.z - Release notes` to the `Release notes`
+- Attach the NuGet package to the release
+- Publish the release!
 
 ## License
 
