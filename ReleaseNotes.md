@@ -6,4 +6,4 @@
 * 0.5.7 - Update `Octokit.net` to `v0.25 - She'll Be Comin' Round the Mountain` and `ScriptCs.Hosting` to `v0.17.1`
 * 0.5.8 - Update `Octokit.net` to `v0.32 - App-stravaganza!`
 * 0.5.9 - Update `Octokit.net` to `v0.35 - A Bit Of Everything`
-* 0.5.10 - Update `Octokit.net` to `v0.40 - Oops, I Did It Again`
+* 0.5.10 - Update `Octokit.net` to `v0.40 - Oops - I Did It Again`
