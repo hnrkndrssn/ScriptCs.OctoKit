@@ -3,7 +3,7 @@ image: Visual Studio 2017
 skip_branch_with_pr: true
 environment:
   NuGetApiKey:
-    secure: DSndaVrSGBjjAygAkUx6Z4z4r5ECpkYHhjSAW7ZLopL1oQbR177ou5Niq5rq
+    secure: 0wkVGA/McokWApvYjzHGWHmmkY/MX7vTapoCbMkZ3wdnxJMjoEX611Jpn9wCR6zv
 dotnet_csproj:
   patch: true
   file: '**\*.csproj'
