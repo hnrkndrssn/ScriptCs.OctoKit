@@ -1,8 +1,9 @@
 version: 1.0.{build}
 image: Visual Studio 2017
+skip_branch_with_pr: true
 environment:
   NuGetApiKey:
-    secure: hSqSXXsRHbyw+XicOQPC17vUR5v5/773a35XIZQDghcHCgTdvXQ8R1seKH+TxoDq
+    secure: DSndaVrSGBjjAygAkUx6Z4z4r5ECpkYHhjSAW7ZLopL1oQbR177ou5Niq5rq
 dotnet_csproj:
   patch: true
   file: '**\*.csproj'
