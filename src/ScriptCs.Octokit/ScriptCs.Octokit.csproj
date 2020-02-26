@@ -26,7 +26,7 @@
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
   </Target>
   <ItemGroup>
-    <PackageReference Include="Octokit" Version="0.40.0" />
+    <PackageReference Include="Octokit" Version="0.42.0" />
     <PackageReference Include="ScriptCs.Contracts" Version="0.17.1" />
   </ItemGroup>
   <ItemGroup>
