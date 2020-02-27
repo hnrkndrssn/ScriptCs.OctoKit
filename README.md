@@ -1,3 +1,5 @@
+## :warning: :rotating_light: :warning: Due to `Octokit.net` moving to `net46` as of `v0.41.0`, no further updates can be made to this script pack as the dependency on `ScriptCs.Contracts` only allows the use of `net45` as a target framework. :broken_heart: :broken_heart: :broken_heart:
+
 ScriptCs.Octokit
 ==============================
 [![Build status](https://ci.appveyor.com/api/projects/status/j024yq10dbfovsxi/branch/master?svg=true)](https://ci.appveyor.com/project/hnrkndrssn/scriptcs-octokit/branch/master)
